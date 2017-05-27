@@ -35,12 +35,13 @@ public class Main {
                 modulesDir.mkdir();
             }
 
-            URL[] urls = {new URL("file://" + modulesDir)};
-            URLClassLoader cl = new URLClassLoader(urls);
+            URLClassLoader cl;
 
             File[] modules = modulesDir.listFiles((dir, name) -> name.endsWith(".jar"));
 
             for (File file : modules) {
+                cl = new URLClassLoader(new URL[]{new URL("file://" + file.getPath())});
+                System.out.println(cl.getURLs().length);
                 List<Class> classes = new ArrayList<>();
                 for (String className : getClasseNames(file.getPath())) {
                     classes.add(cl.loadClass(className));
