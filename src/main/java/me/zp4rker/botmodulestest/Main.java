@@ -7,7 +7,6 @@ import net.dv8tion.jda.core.hooks.AnnotatedEventManager;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FilenameFilter;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -40,14 +39,13 @@ public class Main {
             File[] modules = modulesDir.listFiles((dir, name) -> name.endsWith(".jar"));
 
             for (File file : modules) {
-                cl = new URLClassLoader(new URL[]{new URL("file://" + file.getPath())});
-                System.out.println(cl.getURLs().length);
+                cl = new URLClassLoader(new URL[]{new URL("file://" + file.getPath())}, Main.class.getClassLoader());
                 List<Class> classes = new ArrayList<>();
                 for (String className : getClasseNames(file.getPath())) {
                     classes.add(cl.loadClass(className));
                 }
                 for (Class c : classes) {
-                    if (c.isAnnotationPresent(Module.class)) {
+                    if (Module.class.isAssignableFrom(c)) {
                         Method m = c.getDeclaredMethod("onLoad", JDA.class);
                         m.invoke(c, jda);
                     }
@@ -75,7 +73,7 @@ public class Main {
                     break;
                 }
                 if (jarEntry.getName().endsWith(".class")) {
-                    classes.add(jarEntry.getName().replaceAll("/", "\\."));
+                    classes.add(jarEntry.getName().replaceAll("/", "\\.").replace(".class", ""));
                 }
             }
         } catch (Exception e) {

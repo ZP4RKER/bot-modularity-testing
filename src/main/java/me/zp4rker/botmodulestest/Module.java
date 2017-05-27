@@ -3,10 +3,15 @@ package me.zp4rker.botmodulestest;
 /**
  * @author ZP4RKER
  */
-public @interface Module {
+public abstract class Module {
 
-    String name();
+    public final String name;
 
-    String version();
+    public final String version;
+
+    public Module(String name, String version) {
+        this.name = name;
+        this.version = version;
+    }
 
 }
