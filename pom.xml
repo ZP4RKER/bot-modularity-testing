@@ -4,60 +4,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.zp4rker</groupId>
-    <artifactId>botmodulestest</artifactId>
-    <version>1.0</version>
+    <groupId>com.zp4rker.bots</groupId>
+    <artifactId>bot-modularity-testing</artifactId>
+    <version>1.5</version>
 
     <repositories>
         <repository>
-            <name>bintray</name>
-            <id>bintray-dv8fromtheworld-maven</id>
-            <url>https://dl.bintray.com/dv8fromtheworld/maven</url>
-        </repository>
-        <repository>
-            <name>bintray-central</name>
-            <id>central</id>
-            <url>https://jcenter.bintray.com</url>
+            <id>zpdev</id>
+            <url>https://cdn.rawgit.com/zpdev/maven/master</url>
         </repository>
     </repositories>
 
     <dependencies>
-        <!-- JDA -->
         <dependency>
-            <groupId>net.dv8tion</groupId>
-            <artifactId>JDA</artifactId>
-            <version>LATEST</version>
-        </dependency>
-        <!-- JDA Dependencies -->
-        <dependency>
-            <groupId>com.neovisionaries</groupId>
-            <artifactId>nv-websocket-client</artifactId>
-            <version>LATEST</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mashape.unirest</groupId>
-            <artifactId>unirest-java</artifactId>
-            <version>LATEST</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>LATEST</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>LATEST</version>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20160810</version>
-        </dependency>
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-            <version>LATEST</version>
+            <groupId>com.zp4rker.core</groupId>
+            <artifactId>discord-core</artifactId>
+            <version>1.5.1</version>
         </dependency>
     </dependencies>
 
@@ -102,7 +64,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>me.zp4rker.botmodulestest.Main</mainClass>
+                            <mainClass>com.zp4rker.bots.modularitytest.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
